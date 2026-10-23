@@ -23,12 +23,14 @@ public:
         if(root == NULL){
             return true;
         }
-        int left = height(root->left);
-        int right = height(root->right);
-        int diff = abs(left - right);
-        if(diff > 1){
+        bool left = isBalanced(root->left);
+        bool right = isBalanced(root->right);
+        bool diff = abs(height(root->left) - height(root->right)) <= 1;
+        if(left && right && diff){
+            return true;
+        }
+        else{
             return false;
         }
-        return isBalanced(root->left) && isBalanced(root->right);
     }
 };
